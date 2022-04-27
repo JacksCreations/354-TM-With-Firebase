@@ -1,0 +1,150 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+.taskBox {
+  background-color: rgb(143, 202, 231, 0.5);
+  border: 2px solid black;
+  margin: 6px;
+  padding-left: 9px;
+  padding-top: 10px;
+  border-radius: 3px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.taskBoxUncompleted {
+  background-color: rgb(143, 202, 231, 0.1);
+  border: 2px solid black;
+  margin: 6px;
+  padding-left: 9px;
+  padding-top: 10px;
+  border-radius: 3px;
+  color: red;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#taskFeedTitle {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  padding: 8px;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 25px;
+}
+
+#formLabel {
+  margin-bottom: 12px;
+  font-size: 35px;
+  font-family: 'RoboBebato';
+  margin-top: 10px;
+}
+
+.form-label {
+  font-family: 'Roboto';
+  font-size: 22px;
+  margin: 5px;
+  font-weight: 400;
+}
+
+.mb-2 {
+  width: 65%;
+  display: block;
+  margin: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#addTask {
+  margin: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  background-color: rgba(39, 145, 255, 0.65);
+  border-radius: 4px;
+  font-size: 20px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: black;
+  border: 2px solid rgba(25, 100, 254, 0.5);
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.complete {
+  font-size: 15px;
+  float: right;
+  margin-right: 6px;
+  background-color: rgba(255, 83, 97, 0.7);
+  border-radius: 3px;
+  border-color: rgb(35, 47, 52, 0.8);
+  color: black;
+}
+
+.name {
+  font-family: 'Akshar', sans-serif;
+  font-weight: 500;
+  position: relative;
+}
+
+.notes {
+  padding-bottom: 12px;
+  font-family: 'Akshar', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+#body {
+  background: rgb(230, 230, 230, 0.3);
+}
+
+.feedButtons {
+  margin-top: 20px;
+  margin: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  background-color: rgba(39, 145, 255, 0.65);
+  border-radius: 4px;
+  font-size: 20px;
+  border-color: black;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: black;
+  border: 2px solid rgba(25, 100, 254, 0.5);
+}
+
+#selectedFeedButton {
+  margin-top: 20px;
+  margin: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  background-color: rgba(29, 126, 255, 1);
+  border-radius: 4px;
+  font-size: 20px;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: rgba(245, 245, 245);
+  border: 2px solid rgba(39, 145, 255, 1);
+}
+
+#notasks {
+  font-size: 30px;
+  font-family: 'Bebas Neue';
+  color: rgba(29, 126, 255, 1);
+  margin: 15px;
+}
+
+#header {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(29, 126, 255, 1);
+  align-content: center;
+  font-size: 25px;
+  color: rgba(245, 245, 245, 1);
+  padding-top: 7px;
+  padding-bottom: 3px;
+  text-shadow: 2px 2px #0b1c3d;
+}
