@@ -11,6 +11,7 @@ import {
   setDoc,
   doc,
   getDocs,
+  deleteDoc,
 } from '@firebase/firestore';
 
 const App = () => {
@@ -163,6 +164,14 @@ const App = () => {
     setTasks(taskArr);
   }
 
+  //clears all task from tasks and database
+  function clearTasksFromDB() {
+    tasks.forEach(async (task) => {
+      await deleteDoc(doc(firestore, 'tasks', task.id));
+      setTasks([]);
+    });
+  }
+
   useEffect(() => {
     readTasksInFromDB();
   }, []);
@@ -183,6 +192,11 @@ const App = () => {
             onDelete={completeTask}
             feed={feed}
           />
+          <center>
+            <button id="clearTasks" onClick={() => clearTasksFromDB()}>
+              Clear all Tasks
+            </button>
+          </center>
         </div>
       </div>
     </div>
