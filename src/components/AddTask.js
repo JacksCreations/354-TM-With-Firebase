@@ -21,10 +21,7 @@ const AddTask = ({ onAdd, saveTask }) => {
 
       saveTask({ id, name, description, completed });
 
-      //console.log(id);
-      //console.log(name);
-      //console.log(description);
-      //console.log(completed);
+      //clears the text fields when submit
       setName('');
       setDescription('');
     } else {

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Task = ({ task, onDelete }) => {
+  //resizes the taskbox accordingly depending on if there are task notes
   function detectNotes() {
     let isEmpty = String(task.description).length;
     if (isEmpty > 0) {
@@ -8,6 +9,7 @@ const Task = ({ task, onDelete }) => {
     }
   }
 
+  //this returns a different task box depending on if the task is completed or not
   if (task.completed === true) {
     return (
       <div className="taskBox">

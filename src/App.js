@@ -15,44 +15,31 @@ import {
 } from '@firebase/firestore';
 
 const App = () => {
+  //states used for feed selection, and the different task views
   const [feed, setFeed] = useState(0);
-
-  //test feed
   const [tasks, setTasks] = useState([]);
-
   const [uncompleted, setUncompleted] = useState(
     tasks.filter((task) => task.completed == false)
   );
-
   const [completed, setCompleted] = useState(
     tasks.filter((task) => task.completed == true)
   );
 
-  // Add Task
+  //adds a task to the taskArray
   const addTask = async (task) => {
     setTasks([...tasks, task]);
     setUncompleted([...uncompleted, task]);
-    //console.log(tasks);
   };
 
+  //marks tasks as completed
   const completeTask = (task) => {
     task.completed = true;
-    updateToCompleted(task); //
+    updateToCompleted(task); //UPDATES FIRESTORE DB
     setTasks([...tasks]);
     removeFromTodo();
-    //getAll();
   };
 
-  //function UPDATES THE COMPLETED BOOLEAN TO TRUE
-  //WORKING
-  async function updateToCompleted(task) {
-    const taskRef = doc(firestore, 'tasks', task.id);
-
-    await updateDoc(taskRef, {
-      completed: true,
-    });
-  }
-
+  //NEXT 3 METHODS ARE FOR DISPLAYING TASK FEEDS
   //Shows all tasks
   function getAll() {
     setFeed(0);
@@ -68,7 +55,14 @@ const App = () => {
     setUncompleted(uncompleted);
   }
 
-  //removes task from to do if checked as completed
+  //shows all completed tasks
+  function getCompleted() {
+    setFeed(2);
+    let completed = tasks.filter((task) => task.completed == true);
+    setCompleted(completed);
+  }
+
+  //removes task from uncompleted state if checked as completed
   function removeFromTodo() {
     let uncompleted = tasks.filter((task) => task.completed === false);
 
@@ -79,13 +73,6 @@ const App = () => {
     });
 
     setUncompleted(uncompleted);
-  }
-
-  //shows all completed tasks
-  function getCompleted() {
-    setFeed(2);
-    let completed = tasks.filter((task) => task.completed == true);
-    setCompleted(completed);
   }
 
   //changes the color of the feed buttons when selected
@@ -135,7 +122,10 @@ const App = () => {
     }
   }
 
-  //add a new document to tasks db
+  //FIREBASE FUNCTIONS
+  //------------------------------------------------------------//
+
+  //adds a new task to tasks in the firestore DB
   async function addNewDoc(task) {
     // Add a new document in collection "tasks"
     await setDoc(doc(firestore, 'tasks', task.id), {
@@ -146,6 +136,7 @@ const App = () => {
     });
   }
 
+  //reads in all tasks from firestore DB and sets taskArr
   async function readTasksInFromDB() {
     const querySnapshot = await getDocs(collection(firestore, 'tasks'));
     let taskArr = [];
@@ -164,6 +155,15 @@ const App = () => {
     setTasks(taskArr);
   }
 
+  //updates the firestore DB task completed = true
+  async function updateToCompleted(task) {
+    const taskRef = doc(firestore, 'tasks', task.id);
+
+    await updateDoc(taskRef, {
+      completed: true,
+    });
+  }
+
   //clears all task from tasks and database
   function clearTasksFromDB() {
     tasks.forEach(async (task) => {
@@ -172,6 +172,9 @@ const App = () => {
     });
   }
 
+  //------------------------------------------------------------//
+
+  //calls function to read tasks from DB when loads
   useEffect(() => {
     readTasksInFromDB();
   }, []);
